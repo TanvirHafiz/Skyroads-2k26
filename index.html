@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkyRoads HD</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; height: 100vh; overflow: hidden; background: #05070d;
+        font-family: ui-monospace, "Cascadia Mono", Menlo, monospace; color: #cfe3ff;
+      }
+      canvas { display: block; }
+
+      #hud {
+        position: fixed; inset: auto 0 0 0; padding: 14px 20px;
+        display: flex; gap: 22px; align-items: flex-end;
+        background: linear-gradient(to top, rgba(3,6,14,.92), transparent);
+        pointer-events: none; font-size: 12px; letter-spacing: .08em;
+      }
+      .gauge { flex: 1; max-width: 220px; }
+      .gauge label { display: block; opacity: .65; margin-bottom: 4px; text-transform: uppercase; }
+      .bar { height: 9px; background: #16203a; border: 1px solid #2b3a5e; border-radius: 2px; overflow: hidden; }
+      .bar > span { display: block; height: 100%; width: 0; transition: width .06s linear; }
+      #speed  > .bar > span { background: #6fd3ff; }
+      #oxygen > .bar > span { background: #7ee8a0; }
+      #fuel   > .bar > span { background: #ffcf5c; }
+      #grav { text-align: right; opacity: .8; min-width: 120px; }
+      #grav b { font-size: 20px; display: block; color: #fff; letter-spacing: 0; }
+
+      #status {
+        position: fixed; inset: 0; display: none; place-items: center;
+        text-align: center; background: rgba(3,6,14,.72); backdrop-filter: blur(3px);
+      }
+      #status.show { display: grid; }
+      #status h1 { margin: 0 0 10px; font-size: 30px; letter-spacing: .12em; }
+      #status p { margin: 0; opacity: .7; font-size: 13px; }
+
+      #help {
+        position: fixed; top: 14px; left: 20px; font-size: 11px;
+        opacity: .5; line-height: 1.7; pointer-events: none;
+      }
+      #boot { position: fixed; inset: 0; display: grid; place-items: center; padding: 30px; text-align: center; }
+      #boot code { color: #ffcf5c; }
+    </style>
+  </head>
+  <body>
+    <div id="boot">Loading road data…</div>
+
+    <div id="help" hidden>
+      ↑ / ↓ throttle &nbsp;·&nbsp; ← / → steer &nbsp;·&nbsp; SPACE jump<br />
+      R restart &nbsp;·&nbsp; [ ] change level &nbsp;·&nbsp; M load custom MIDI
+    </div>
+
+    <input type="file" id="midiFile" accept=".mid,.midi,audio/midi" hidden />
+
+    <div id="hud" hidden>
+      <div class="gauge" id="speed"><label>Speed</label><div class="bar"><span></span></div></div>
+      <div class="gauge" id="oxygen"><label>Oxygen</label><div class="bar"><span></span></div></div>
+      <div class="gauge" id="fuel"><label>Fuel</label><div class="bar"><span></span></div></div>
+      <div id="grav"><label>Grav-o-meter</label><b>—</b></div>
+    </div>
+
+    <div id="status"><div><h1></h1><p>Press R to restart</p></div></div>
+
+    <script type="module" src="/src/app/main.ts"></script>
+  </body>
+</html>

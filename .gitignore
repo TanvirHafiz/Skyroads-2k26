@@ -1,0 +1,16 @@
+node_modules/
+dist/
+release/
+*.local
+.DS_Store
+
+# Original SkyRoads data files.
+# These are BlueMoon Interactive's, and their licence requires distribution as a
+# single unmodified unit -- we must never redistribute extracted copies.
+# See docs/RESEARCH.md section 1. Bring your own copy; see README.
+assets/original/
+
+# Decoded copies of the original's artwork (tools/dump-image.ts output), used
+# only for local verification during development. Same restriction as above --
+# these are BlueMoon's copyrighted backdrop art, just re-encoded as PNG.
+assets/decoded/

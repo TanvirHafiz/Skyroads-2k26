@@ -1,0 +1,38 @@
+# electron-builder config for SkyRoads HD.
+#
+# `files` is a strict allowlist -- only these paths end up inside the shipped
+# app. This is the one line that MUST never grow to include assets/original/:
+# BlueMoon's licence requires their original SkyRoads data be distributed
+# "as a single unit, with all accompanying files included and intact in
+# their original form", which forbids repackaging it inside our own
+# installer. See docs/RESEARCH.md and electron/main.cjs's header comment.
+# assets/original/ is also gitignored, so it would take a deliberate change
+# here to bundle it by accident -- but the explicit negation below is a
+# second, independent guard against that ever happening silently.
+
+appId: com.skyroadshd.app
+productName: SkyRoads HD
+directories:
+  output: release
+
+files:
+  - dist/**/*
+  - electron/**/*
+  - music/**/*
+  - assets/custom/**/*
+  - package.json
+  - "!assets/original/**"
+
+# electron-builder auto-includes production "dependencies" from package.json
+# (currently just sirv, which the local server needs at runtime) -- no need
+# to list node_modules explicitly.
+
+win:
+  target:
+    - nsis # a normal installer
+    - portable # a single standalone exe, no install/uninstall needed -- the
+      # easiest option to hand a beta tester
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true

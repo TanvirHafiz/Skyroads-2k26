@@ -1,5 +1,7 @@
 # SkyRoads HD
 
+![SkyRoads HD gameplay — Road 1, Red Heat](screenshots/01.png)
+
 A modern, high-definition remake of *SkyRoads* (BlueMoon Software, 1993), built on a
 **1:1 deterministic reconstruction** of the original DOS simulation.
 
@@ -8,6 +10,39 @@ The physics are not approximated. The sim runs at the original's exact tick rate
 constants — so jump arcs, top speed, steering authority and fuel burn match the 1993 game
 rather than merely evoking it. Rendering is fully decoupled from simulation, so display
 refresh rate has no influence on physics.
+
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/02.png" width="800" alt="Boost tiles glowing green under bloom, Road 1">
+</p>
+
+Road 1 (Red Heat) — special tiles read at a glance under bloom: green here is a boost pad,
+matching the original's colour-coded rules exactly (see `docs/RESEARCH.md`).
+
+## Planets
+
+Ten backdrops, one per planet (three levels each), rendered live behind the road in-game —
+these are AI-generated replacements for the original's 320×138 painted art, dropped straight
+into `assets/custom/` with no code changes needed. See that folder's own README for the prompts
+used and how to swap in your own.
+
+<table>
+<tr>
+<td align="center"><img src="assets/custom/world0.jpg" width="180"><br><sub>Levels 1–3</sub></td>
+<td align="center"><img src="assets/custom/world1.jpg" width="180"><br><sub>Levels 4–6</sub></td>
+<td align="center"><img src="assets/custom/world2.jpg" width="180"><br><sub>Levels 7–9</sub></td>
+<td align="center"><img src="assets/custom/world3.jpg" width="180"><br><sub>Levels 10–12</sub></td>
+<td align="center"><img src="assets/custom/world4.jpg" width="180"><br><sub>Levels 13–15</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="assets/custom/world5.jpg" width="180"><br><sub>Levels 16–18</sub></td>
+<td align="center"><img src="assets/custom/world6.jpg" width="180"><br><sub>Levels 19–21</sub></td>
+<td align="center"><img src="assets/custom/world7.jpg" width="180"><br><sub>Levels 22–24</sub></td>
+<td align="center"><img src="assets/custom/world8.jpg" width="180"><br><sub>Levels 25–27</sub></td>
+<td align="center"><img src="assets/custom/world9.jpg" width="180"><br><sub>Levels 28–30</sub></td>
+</tr>
+</table>
 
 ## You need your own copy of the game
 

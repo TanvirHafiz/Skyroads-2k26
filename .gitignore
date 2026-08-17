@@ -3,6 +3,7 @@ dist/
 release/
 *.local
 .DS_Store
+.claude/scheduled_tasks.lock
 
 # Original SkyRoads data files.
 # These are BlueMoon Interactive's, and their licence requires distribution as a
